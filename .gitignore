@@ -7,3 +7,5 @@
 *.egg-info
 .cache
 build/
+local.ini
+taiwan_stock_price.csv

@@ -17,8 +17,7 @@ def crawler_finmind_print(stock_id):
     parameter = {
         "dataset": "TaiwanStockPrice",  # 台股日線資料
         "data_id": stock_id,  # 股票代碼, ex: 2330
-        "start_date": "2024-01-01",
-        "end_date": "2025-06-17",
+        "start_date": "2016-01-01",
     }
     # 發送 HTTP GET 請求, 把參數放在 query string
     resp = requests.get(url, params=parameter)
@@ -40,7 +39,7 @@ def upload_data_to_mysql(df: pd.DataFrame):
     # 格式：mysql+pymysql://使用者:密碼@主機:port/資料庫名稱
     # 上傳到 mydb, 同學可切換成自己的 database
     try:
-        address = f"mysql+pymysql://{MYSQL_ACCOUNT}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/tibame"
+        address = f"mysql+pymysql://{MYSQL_ACCOUNT}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/mydb"
 
         # 建立 SQLAlchemy 引擎物件
         engine = create_engine(address)
@@ -64,8 +63,7 @@ def crawler_finmind(stock_id):
     parameter = {
         "dataset": "TaiwanStockPrice",  # 台股日線資料
         "data_id": stock_id,  # 股票代碼, ex: 2330
-        "start_date": "2024-01-01",
-        "end_date": "2025-06-17",
+        "start_date": "2016-01-01",
     }
     # 發送 HTTP GET 請求, 把參數放在 query string
     resp = requests.get(url, params=parameter)
